@@ -1,0 +1,66 @@
+body {
+  background-color: #1a1a2e;
+  font-family: -apple-system, Segoe UI, Roboto, sans-serif;
+  padding: 24px 0;
+}
+
+.app-container {
+  max-width: 960px;
+  margin: 0 auto;
+  background: #f0f0f0;
+  border-radius: 6px;
+  padding: 24px;
+}
+
+.app-title {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background: #fff;
+  border-radius: 6px;
+  width: 90%;
+  max-width: 420px;
+  padding: 20px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.modal-close {
+  border: none;
+  background: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}

@@ -1,0 +1,41 @@
+{
+  "name": "lab-app",
+  "version": "1.0.0",
+  "description": "Лабораторна робота №2 - клієнтський застосунок управління бібліотекою (TypeScript)",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "test": "mocha",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.16",
+    "@types/mocha": "^10.0.6",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "@typescript-eslint/parser": "^7.7.0",
+    "chai": "^4.4.1",
+    "css-loader": "^7.1.5",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "html-webpack-plugin": "^5.6.8",
+    "husky": "^9.0.11",
+    "mini-css-extract-plugin": "^2.10.2",
+    "mocha": "^10.4.0",
+    "prettier": "^3.2.5",
+    "sass": "^1.105.0",
+    "sass-loader": "^14.2.1",
+    "ts-loader": "^9.6.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5",
+    "webpack": "^5.111.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.2.6"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  }
+}

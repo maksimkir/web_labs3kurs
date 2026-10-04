@@ -1,0 +1,30 @@
+{
+  "name": "lab1-typescript",
+  "version": "1.0.0",
+  "description": "Лабораторна робота №1. Строга типізація у вебі: екосистема мови TypeScript.",
+  "main": "index.js",
+ "scripts": {
+  "build": "tsc",
+  "watch": "tsc --watch",
+  "variables": "node dist/variables.js",
+  "functions": "node dist/functions.js",
+  "icecream": "node dist/icecream.js",
+  "animals": "node dist/animals.js",
+  "shapes": "node dist/shapes.js",
+  "cars": "node dist/cars.js",
+  "employees": "node dist/employees.js",
+  "courses": "node dist/courses.js",
+  "library": "node dist/library.js"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.20.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@types/readline-sync": "^1.4.8",
+    "readline-sync": "^1.4.10"
+  }
+}
