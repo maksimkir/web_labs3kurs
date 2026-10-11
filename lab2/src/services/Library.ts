@@ -5,11 +5,6 @@ export interface Identifiable {
   id: string;
 }
 
-/**
- * Generic-клас Library<T> для управління колекцією об'єктів будь-якого типу,
- * що має унікальний ідентифікатор (id). Використовується як для книг, так і
- * для користувачів - без дублювання логіки CRUD.
- */
 export class Library<T extends Identifiable> {
   private items: T[];
 

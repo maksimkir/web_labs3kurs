@@ -1,0 +1,378 @@
+[
+  {
+    "id": 1,
+    "gender": "female",
+    "name": {
+      "title": "Mrs",
+      "first": "Emma",
+      "last": "Lampi"
+    },
+    "location": {
+      "street": {
+        "number": 2304,
+        "name": "Siilitie"
+      },
+      "city": "Hausjärvi",
+      "state": "Uusimaa",
+      "country": "Finland",
+      "postcode": 98555,
+      "timezone": {
+        "offset": "+8:00",
+        "description": "Beijing, Perth, Singapore, Hong Kong"
+      }
+    },
+    "email": "emma.lampi@example.com",
+    "dob": {
+      "date": "2001-03-08T01:39:19.084Z",
+      "age": 25
+    },
+    "phone": "02-689-410",
+    "cell": "043-730-12-94",
+    "picture": "/users/1.svg",
+    "hobbies": [
+      "Travel",
+      "Photography",
+      "Hiking",
+      "Reading",
+      "Cooking",
+      "Music"
+    ],
+    "details": "Product designer who plans every weekend around a new trail and a new coffee shop."
+  },
+  {
+    "id": 2,
+    "gender": "male",
+    "name": {
+      "title": "Mr",
+      "first": "Noah",
+      "last": "Becker"
+    },
+    "location": {
+      "street": {
+        "number": 12,
+        "name": "Lindenallee"
+      },
+      "city": "Hamburg",
+      "state": "Hamburg",
+      "country": "Germany",
+      "postcode": 20095,
+      "timezone": {
+        "offset": "+1:00",
+        "description": "Brussels, Copenhagen, Madrid, Paris"
+      }
+    },
+    "email": "noah.becker@example.com",
+    "dob": {
+      "date": "2010-06-14T09:12:44.310Z",
+      "age": 16
+    },
+    "phone": "(040) 5527-3318",
+    "cell": "0151-42367890",
+    "picture": "/users/2.svg",
+    "hobbies": [
+      "Gaming",
+      "Music",
+      "Cycling"
+    ],
+    "details": "Ninth grader who builds small browser games and records beats on the side."
+  },
+  {
+    "id": 3,
+    "gender": "female",
+    "name": {
+      "title": "Ms",
+      "first": "Sofia",
+      "last": "Marino"
+    },
+    "location": {
+      "street": {
+        "number": 18,
+        "name": "Via Zamboni"
+      },
+      "city": "Bologna",
+      "state": "Emilia-Romagna",
+      "country": "Italy",
+      "postcode": 40121,
+      "timezone": {
+        "offset": "+1:00",
+        "description": "Brussels, Copenhagen, Madrid, Paris"
+      }
+    },
+    "email": "sofia.marino@example.com",
+    "dob": {
+      "date": "1996-11-02T17:05:21.402Z",
+      "age": 29
+    },
+    "phone": "051 2847 3920",
+    "cell": "331 482 9170",
+    "picture": "/users/3.svg",
+    "hobbies": [
+      "Cooking",
+      "Travel",
+      "Reading",
+      "Photography"
+    ],
+    "details": "Pastry chef documenting regional recipes, one village market at a time."
+  },
+  {
+    "id": 4,
+    "gender": "male",
+    "name": {
+      "title": "Mr",
+      "first": "Lucas",
+      "last": "Martin"
+    },
+    "location": {
+      "street": {
+        "number": 45,
+        "name": "Rue de la République"
+      },
+      "city": "Lyon",
+      "state": "Auvergne-Rhône-Alpes",
+      "country": "France",
+      "postcode": 69003,
+      "timezone": {
+        "offset": "+1:00",
+        "description": "Brussels, Copenhagen, Madrid, Paris"
+      }
+    },
+    "email": "lucas.martin@example.com",
+    "dob": {
+      "date": "1989-02-20T06:48:09.771Z",
+      "age": 37
+    },
+    "phone": "04-72-91-33-08",
+    "cell": "06-18-45-27-61",
+    "picture": "/users/4.svg",
+    "hobbies": [
+      "Cycling",
+      "Cooking",
+      "Music"
+    ],
+    "details": "Backend engineer and weekend road cyclist who still mixes vinyl for friends."
+  },
+  {
+    "id": 5,
+    "gender": "female",
+    "name": {
+      "title": "Mrs",
+      "first": "Olga",
+      "last": "Kovalenko"
+    },
+    "location": {
+      "street": {
+        "number": 54,
+        "name": "Holovna"
+      },
+      "city": "Chernivtsi",
+      "state": "Chernivtsi Oblast",
+      "country": "Ukraine",
+      "postcode": 58000,
+      "timezone": {
+        "offset": "+2:00",
+        "description": "Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius"
+      }
+    },
+    "email": "olga.kovalenko@example.com",
+    "dob": {
+      "date": "1975-09-30T12:20:55.119Z",
+      "age": 51
+    },
+    "phone": "(0372) 55-14-87",
+    "cell": "(097) 316-42-09",
+    "picture": "/users/5.svg",
+    "hobbies": [
+      "Gardening",
+      "Reading",
+      "Cooking"
+    ],
+    "details": "Literature teacher with a greenhouse full of tomatoes and a very long reading list."
+  },
+  {
+    "id": 6,
+    "gender": "male",
+    "name": {
+      "title": "Mr",
+      "first": "Jack",
+      "last": "Thompson"
+    },
+    "location": {
+      "street": {
+        "number": 781,
+        "name": "Barrington Street"
+      },
+      "city": "Halifax",
+      "state": "Nova Scotia",
+      "country": "Canada",
+      "postcode": "B3H 1A1",
+      "timezone": {
+        "offset": "-4:00",
+        "description": "Atlantic Time (Canada), Caracas, La Paz"
+      }
+    },
+    "email": "jack.thompson@example.com",
+    "dob": {
+      "date": "1962-01-12T03:33:40.628Z",
+      "age": 64
+    },
+    "phone": "902-555-0147",
+    "cell": "902-555-0193",
+    "picture": "/users/6.svg",
+    "hobbies": [
+      "Fishing",
+      "Hiking",
+      "Photography"
+    ],
+    "details": "Retired harbour pilot who photographs the coastline from every trail he hikes."
+  },
+  {
+    "id": 7,
+    "gender": "female",
+    "name": {
+      "title": "Miss",
+      "first": "Mia",
+      "last": "Johansson"
+    },
+    "location": {
+      "street": {
+        "number": 7,
+        "name": "Kungsgatan"
+      },
+      "city": "Gothenburg",
+      "state": "Västra Götaland",
+      "country": "Sweden",
+      "postcode": 41103,
+      "timezone": {
+        "offset": "+1:00",
+        "description": "Brussels, Copenhagen, Madrid, Paris"
+      }
+    },
+    "email": "mia.johansson@example.com",
+    "dob": {
+      "date": "2007-12-01T20:15:12.904Z",
+      "age": 18
+    },
+    "phone": "031-482 17 66",
+    "cell": "070-215 83 49",
+    "picture": "/users/7.svg",
+    "hobbies": [
+      "Music",
+      "Travel",
+      "Gaming"
+    ],
+    "details": "First-year student who plays in two bands and has just turned 18."
+  },
+  {
+    "id": 8,
+    "gender": "male",
+    "name": {
+      "title": "Mr",
+      "first": "Andrii",
+      "last": "Shevchenko"
+    },
+    "location": {
+      "street": {
+        "number": 21,
+        "name": "Hrushevskoho"
+      },
+      "city": "Lviv",
+      "state": "Lviv Oblast",
+      "country": "Ukraine",
+      "postcode": 79000,
+      "timezone": {
+        "offset": "+2:00",
+        "description": "Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius"
+      }
+    },
+    "email": "andrii.shevchenko@example.com",
+    "dob": {
+      "date": "1999-05-17T14:02:31.856Z",
+      "age": 27
+    },
+    "phone": "(032) 244-19-53",
+    "cell": "(063) 702-58-14",
+    "picture": "/users/8.svg",
+    "hobbies": [
+      "Hiking",
+      "Gaming",
+      "Photography",
+      "Cycling"
+    ],
+    "details": "Frontend developer exploring the Carpathians with a camera and a Vue side project."
+  },
+  {
+    "id": 9,
+    "gender": "female",
+    "name": {
+      "title": "Mrs",
+      "first": "Clara",
+      "last": "Dubois"
+    },
+    "location": {
+      "street": {
+        "number": 31,
+        "name": "Rue du Rhône"
+      },
+      "city": "Geneva",
+      "state": "Geneva",
+      "country": "Switzerland",
+      "postcode": 1201,
+      "timezone": {
+        "offset": "+1:00",
+        "description": "Brussels, Copenhagen, Madrid, Paris"
+      }
+    },
+    "email": "clara.dubois@example.com",
+    "dob": {
+      "date": "1980-07-08T08:57:18.273Z",
+      "age": 46
+    },
+    "phone": "022 318 74 05",
+    "cell": "079 624 31 88",
+    "picture": "/users/9.svg",
+    "hobbies": [
+      "Reading",
+      "Gardening",
+      "Travel"
+    ],
+    "details": "Architect who restores old greenhouses and travels by train whenever possible."
+  },
+  {
+    "id": 10,
+    "gender": "male",
+    "name": {
+      "title": "Mr",
+      "first": "Mateo",
+      "last": "Garcia"
+    },
+    "location": {
+      "street": {
+        "number": 9,
+        "name": "Calle de Colón"
+      },
+      "city": "Valencia",
+      "state": "Comunidad Valenciana",
+      "country": "Spain",
+      "postcode": 46001,
+      "timezone": {
+        "offset": "+1:00",
+        "description": "Brussels, Copenhagen, Madrid, Paris"
+      }
+    },
+    "email": "mateo.garcia@example.com",
+    "dob": {
+      "date": "1993-04-25T22:41:07.545Z",
+      "age": 33
+    },
+    "phone": "961 83 27 40",
+    "cell": "612 49 05 73",
+    "picture": "/users/10.svg",
+    "hobbies": [
+      "Cycling",
+      "Cooking",
+      "Music",
+      "Fishing"
+    ],
+    "details": "Paella purist, amateur drummer and the person who organises every group bike ride."
+  }
+]

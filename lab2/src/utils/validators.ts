@@ -1,8 +1,4 @@
-/**
- * Простір імен Validation - містить чисті функції валідації форм.
- * Групування у namespace доречне тут, бо це набір тісно пов'язаних
- * допоміжних функцій без стану, які використовуються лише всередині utils/ui.
- */
+
 export namespace Validation {
   export interface ValidationResult {
     valid: boolean;

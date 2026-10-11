@@ -1,8 +1,6 @@
 import { IUser } from './interfaces/IUser';
 
-/**
- * Клас користувача бібліотеки.
- */
+
 export class User implements IUser {
   public borrowedBooksCount: number;
 

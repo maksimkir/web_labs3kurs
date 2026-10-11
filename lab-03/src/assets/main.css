@@ -1,0 +1,28 @@
+:root {
+  --ink: #0f1a4a;
+  --ink-soft: #38426b;
+  --muted: #68739a;
+  --line: #e4e8f2;
+  --panel: #edf1f9;
+  --page: #f3f5fa;
+  --surface: #ffffff;
+
+  font-family: Inter, 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--page);
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background: var(--page);
+}

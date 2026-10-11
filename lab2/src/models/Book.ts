@@ -1,9 +1,6 @@
 import { IBook } from './interfaces/IBook';
 
-/**
- * Клас книги бібліотеки.
- * Реалізує інтерфейс IBook та інкапсулює стан позичання.
- */
+
 export class Book implements IBook {
   public isBorrowed: boolean;
   public borrowedBy: string | null;
