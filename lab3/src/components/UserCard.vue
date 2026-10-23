@@ -19,7 +19,7 @@ const shortLocation = computed(() => {
   const { city, state, country } = props.user.location
   return `${city}, ${state}, ${country}`
 })
-const street = computed(() => `${props.user.location.street.number} ${props.user.location.street.name}`)
+const street = computed(() => `${props.user.location.street.name}, ${props.user.location.street.number}`)
 const timezone = computed(() => {
   const { offset, description } = props.user.location.timezone
   return `${offset} (${description})`

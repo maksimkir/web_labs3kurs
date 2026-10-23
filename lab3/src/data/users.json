@@ -1,0 +1,378 @@
+[
+  {
+    "id": 1,
+    "gender": "female",
+    "name": {
+      "title": "Mrs",
+      "first": "Ірина",
+      "last": "Мельник"
+    },
+    "location": {
+      "street": {
+        "number": 45,
+        "name": "вул. Городоцька"
+      },
+      "city": "Львів",
+      "state": "Львівська область",
+      "country": "Україна",
+      "postcode": 79000,
+      "timezone": {
+        "offset": "+2:00",
+        "description": "Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius"
+      }
+    },
+    "email": "iryna.melnyk@gmail.com",
+    "dob": {
+      "date": "2001-03-08T01:39:19.084Z",
+      "age": 25
+    },
+    "phone": "(032) 245-18-73",
+    "cell": "(067) 430-12-94",
+    "picture": "/users/1.svg",
+    "hobbies": [
+      "Travel",
+      "Photography",
+      "Hiking",
+      "Reading",
+      "Cooking",
+      "Music"
+    ],
+    "details": "UX designer from Lviv who plans every weekend around a new trail and a new coffee shop."
+  },
+  {
+    "id": 2,
+    "gender": "male",
+    "name": {
+      "title": "Mr",
+      "first": "Назар",
+      "last": "Бондаренко"
+    },
+    "location": {
+      "street": {
+        "number": 18,
+        "name": "вул. Сумська"
+      },
+      "city": "Харків",
+      "state": "Харківська область",
+      "country": "Україна",
+      "postcode": 61000,
+      "timezone": {
+        "offset": "+2:00",
+        "description": "Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius"
+      }
+    },
+    "email": "nazar.bondarenko@gmail.com",
+    "dob": {
+      "date": "2010-06-14T09:12:44.310Z",
+      "age": 16
+    },
+    "phone": "(057) 714-33-18",
+    "cell": "(050) 273-67-80",
+    "picture": "/users/2.svg",
+    "hobbies": [
+      "Gaming",
+      "Music",
+      "Cycling"
+    ],
+    "details": "Tenth grader from Kharkiv who builds small browser games and records beats on the side."
+  },
+  {
+    "id": 3,
+    "gender": "female",
+    "name": {
+      "title": "Ms",
+      "first": "Софія",
+      "last": "Ткаченко"
+    },
+    "location": {
+      "street": {
+        "number": 12,
+        "name": "вул. Дерибасівська"
+      },
+      "city": "Одеса",
+      "state": "Одеська область",
+      "country": "Україна",
+      "postcode": 65000,
+      "timezone": {
+        "offset": "+2:00",
+        "description": "Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius"
+      }
+    },
+    "email": "sofiia.tkachenko@gmail.com",
+    "dob": {
+      "date": "1996-11-02T17:05:21.402Z",
+      "age": 29
+    },
+    "phone": "(048) 722-40-15",
+    "cell": "(093) 518-29-47",
+    "picture": "/users/3.svg",
+    "hobbies": [
+      "Cooking",
+      "Travel",
+      "Reading",
+      "Photography"
+    ],
+    "details": "Pastry chef from Odesa documenting regional recipes, one village market at a time."
+  },
+  {
+    "id": 4,
+    "gender": "male",
+    "name": {
+      "title": "Mr",
+      "first": "Андрій",
+      "last": "Кравченко"
+    },
+    "location": {
+      "street": {
+        "number": 33,
+        "name": "просп. Дмитра Яворницького"
+      },
+      "city": "Дніпро",
+      "state": "Дніпропетровська область",
+      "country": "Україна",
+      "postcode": 49000,
+      "timezone": {
+        "offset": "+2:00",
+        "description": "Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius"
+      }
+    },
+    "email": "andrii.kravchenko@gmail.com",
+    "dob": {
+      "date": "1989-02-20T06:48:09.771Z",
+      "age": 37
+    },
+    "phone": "(056) 370-91-26",
+    "cell": "(068) 145-27-61",
+    "picture": "/users/4.svg",
+    "hobbies": [
+      "Cycling",
+      "Cooking",
+      "Music"
+    ],
+    "details": "Backend engineer from Dnipro and weekend road cyclist who still mixes vinyl for friends."
+  },
+  {
+    "id": 5,
+    "gender": "female",
+    "name": {
+      "title": "Mrs",
+      "first": "Ольга",
+      "last": "Шевчук"
+    },
+    "location": {
+      "street": {
+        "number": 54,
+        "name": "вул. Головна"
+      },
+      "city": "Чернівці",
+      "state": "Чернівецька область",
+      "country": "Україна",
+      "postcode": 58000,
+      "timezone": {
+        "offset": "+2:00",
+        "description": "Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius"
+      }
+    },
+    "email": "olha.shevchuk@gmail.com",
+    "dob": {
+      "date": "1975-09-30T12:20:55.119Z",
+      "age": 51
+    },
+    "phone": "(0372) 55-14-87",
+    "cell": "(097) 316-42-09",
+    "picture": "/users/5.svg",
+    "hobbies": [
+      "Gardening",
+      "Reading",
+      "Cooking"
+    ],
+    "details": "Literature teacher from Chernivtsi with a greenhouse full of tomatoes and a very long reading list."
+  },
+  {
+    "id": 6,
+    "gender": "male",
+    "name": {
+      "title": "Mr",
+      "first": "Василь",
+      "last": "Коваль"
+    },
+    "location": {
+      "street": {
+        "number": 7,
+        "name": "вул. Незалежності"
+      },
+      "city": "Івано-Франківськ",
+      "state": "Івано-Франківська область",
+      "country": "Україна",
+      "postcode": 76000,
+      "timezone": {
+        "offset": "+2:00",
+        "description": "Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius"
+      }
+    },
+    "email": "vasyl.koval@gmail.com",
+    "dob": {
+      "date": "1962-01-12T03:33:40.628Z",
+      "age": 64
+    },
+    "phone": "(0342) 53-27-19",
+    "cell": "(096) 802-35-71",
+    "picture": "/users/6.svg",
+    "hobbies": [
+      "Fishing",
+      "Hiking",
+      "Photography"
+    ],
+    "details": "Retired mountain guide from Ivano-Frankivsk who photographs the Carpathians from every trail he hikes."
+  },
+  {
+    "id": 7,
+    "gender": "female",
+    "name": {
+      "title": "Miss",
+      "first": "Марія",
+      "last": "Лисенко"
+    },
+    "location": {
+      "street": {
+        "number": 22,
+        "name": "вул. Європейська"
+      },
+      "city": "Полтава",
+      "state": "Полтавська область",
+      "country": "Україна",
+      "postcode": 36000,
+      "timezone": {
+        "offset": "+2:00",
+        "description": "Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius"
+      }
+    },
+    "email": "mariia.lysenko@gmail.com",
+    "dob": {
+      "date": "2007-12-01T20:15:12.904Z",
+      "age": 18
+    },
+    "phone": "(0532) 61-48-30",
+    "cell": "(063) 215-83-49",
+    "picture": "/users/7.svg",
+    "hobbies": [
+      "Music",
+      "Travel",
+      "Gaming"
+    ],
+    "details": "First-year student from Poltava who plays in two bands and has just turned 18."
+  },
+  {
+    "id": 8,
+    "gender": "male",
+    "name": {
+      "title": "Mr",
+      "first": "Богдан",
+      "last": "Олійник"
+    },
+    "location": {
+      "street": {
+        "number": 61,
+        "name": "вул. Соборна"
+      },
+      "city": "Вінниця",
+      "state": "Вінницька область",
+      "country": "Україна",
+      "postcode": 21000,
+      "timezone": {
+        "offset": "+2:00",
+        "description": "Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius"
+      }
+    },
+    "email": "bohdan.oliinyk@gmail.com",
+    "dob": {
+      "date": "1999-05-17T14:02:31.856Z",
+      "age": 27
+    },
+    "phone": "(0432) 67-19-53",
+    "cell": "(063) 702-58-14",
+    "picture": "/users/8.svg",
+    "hobbies": [
+      "Hiking",
+      "Gaming",
+      "Photography",
+      "Cycling"
+    ],
+    "details": "Frontend developer from Vinnytsia exploring Ukrainian trails with a camera and a Vue side project."
+  },
+  {
+    "id": 9,
+    "gender": "female",
+    "name": {
+      "title": "Mrs",
+      "first": "Наталія",
+      "last": "Мороз"
+    },
+    "location": {
+      "street": {
+        "number": 120,
+        "name": "просп. Соборний"
+      },
+      "city": "Запоріжжя",
+      "state": "Запорізька область",
+      "country": "Україна",
+      "postcode": 69000,
+      "timezone": {
+        "offset": "+2:00",
+        "description": "Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius"
+      }
+    },
+    "email": "nataliia.moroz@gmail.com",
+    "dob": {
+      "date": "1980-07-08T08:57:18.273Z",
+      "age": 46
+    },
+    "phone": "(061) 764-31-05",
+    "cell": "(099) 624-31-88",
+    "picture": "/users/9.svg",
+    "hobbies": [
+      "Reading",
+      "Gardening",
+      "Travel"
+    ],
+    "details": "Architect from Zaporizhzhia who restores old greenhouses and travels by train whenever possible."
+  },
+  {
+    "id": 10,
+    "gender": "male",
+    "name": {
+      "title": "Mr",
+      "first": "Тарас",
+      "last": "Савчук"
+    },
+    "location": {
+      "street": {
+        "number": 15,
+        "name": "вул. Лесі Українки"
+      },
+      "city": "Луцьк",
+      "state": "Волинська область",
+      "country": "Україна",
+      "postcode": 43000,
+      "timezone": {
+        "offset": "+2:00",
+        "description": "Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius"
+      }
+    },
+    "email": "taras.savchuk@gmail.com",
+    "dob": {
+      "date": "1993-04-25T22:41:07.545Z",
+      "age": 33
+    },
+    "phone": "(0332) 77-40-26",
+    "cell": "(066) 249-05-73",
+    "picture": "/users/10.svg",
+    "hobbies": [
+      "Cycling",
+      "Cooking",
+      "Music",
+      "Fishing"
+    ],
+    "details": "Lutsk-based cook, amateur drummer and the person who organises every group bike ride."
+  }
+]
