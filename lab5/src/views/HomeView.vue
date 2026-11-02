@@ -15,6 +15,7 @@ const TECHNOLOGIES = [
 ]
 </script>
 
+
 <template>
   <section class="card">
     <div class="card-body-padded">
