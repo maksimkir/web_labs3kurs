@@ -3,9 +3,11 @@ import './TaskItem.scss'
 
 interface TaskItemProps {
   task: Task
+  onToggle: (id: number) => void
+  onDelete: (id: number) => void
 }
 
-function TaskItem({ task }: TaskItemProps) {
+function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
   return (
     <li className={`task-item${task.completed ? ' task-item--completed' : ''}`}>
       <div className="task-item__body">
@@ -18,6 +20,24 @@ function TaskItem({ task }: TaskItemProps) {
           </span>
           <span className="task-item__status">{task.completed ? 'Виконано' : 'Не виконано'}</span>
         </div>
+      </div>
+      <div className="task-item__actions">
+        <button
+          type="button"
+          className={`button button--small${task.completed ? '' : ' button--primary'}`}
+          onClick={() => onToggle(task.id)}
+          aria-pressed={task.completed}
+        >
+          {task.completed ? 'Повернути' : 'Виконано'}
+        </button>
+        <button
+          type="button"
+          className="button button--small button--danger"
+          onClick={() => onDelete(task.id)}
+          aria-label={`Видалити завдання «${task.title}»`}
+        >
+          Видалити
+        </button>
       </div>
     </li>
   )

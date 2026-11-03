@@ -18,6 +18,18 @@ function App() {
     })
   }
 
+  function toggleTask(id: number) {
+    // map повертає новий масив; змінене завдання — новий об'єкт, інші — без змін
+    setTasks((prev) =>
+      prev.map((task) => (task.id === id ? { ...task, completed: !task.completed } : task)),
+    )
+  }
+
+  function deleteTask(id: number) {
+    // filter повертає новий масив без видаленого завдання
+    setTasks((prev) => prev.filter((task) => task.id !== id))
+  }
+
   return (
     <div className="app">
       <Header />
@@ -26,7 +38,7 @@ function App() {
           <TaskForm onAdd={addTask} />
         </aside>
         <div className="app__content">
-          <TaskList tasks={tasks} />
+          <TaskList tasks={tasks} onToggle={toggleTask} onDelete={deleteTask} />
         </div>
       </main>
     </div>
