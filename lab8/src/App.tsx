@@ -1,14 +1,23 @@
 import { useState } from 'react'
 import Header from './components/Header'
+import TaskFilters from './components/TaskFilters'
 import TaskForm from './components/TaskForm'
 import TaskList from './components/TaskList'
 import { initialTasks } from './data/initialTasks'
-import type { NewTask, Task } from './types/task'
+import type { NewTask, Task, TaskFilter } from './types/task'
 import './App.scss'
 
 function App() {
   // список завдань живе в стані App і передається дочірнім компонентам через props
   const [tasks, setTasks] = useState<Task[]>(initialTasks)
+  const [filter, setFilter] = useState<TaskFilter>('all')
+
+  // відфільтрований список обчислюється при кожному рендері; вихідний масив не змінюється
+  const visibleTasks = tasks.filter((task) => {
+    if (filter === 'completed') return task.completed
+    if (filter === 'active') return !task.completed
+    return true
+  })
 
   function addTask(newTask: NewTask) {
     // незмінне оновлення: новий масив з новим завданням на початку
@@ -38,7 +47,13 @@ function App() {
           <TaskForm onAdd={addTask} />
         </aside>
         <div className="app__content">
-          <TaskList tasks={tasks} onToggle={toggleTask} onDelete={deleteTask} />
+          <TaskFilters value={filter} onChange={setFilter} />
+          <TaskList
+            tasks={visibleTasks}
+            totalCount={tasks.length}
+            onToggle={toggleTask}
+            onDelete={deleteTask}
+          />
         </div>
       </main>
     </div>
