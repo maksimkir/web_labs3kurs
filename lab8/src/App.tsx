@@ -1,8 +1,12 @@
+import './App.scss'
+
 function App() {
   return (
-    <main>
-      <h1>Study Planner</h1>
-    </main>
+    <div className="app">
+      <main className="app__container">
+        <h1>Study Planner</h1>
+      </main>
+    </div>
   )
 }
 
