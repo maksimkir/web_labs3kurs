@@ -1,3 +1,5 @@
+@use '../styles/mixins' as *;
+
 // Блок "header": шапка застосунку
 .header {
   color: var(--color-on-primary);
@@ -20,5 +22,27 @@
 
   &__subtitle {
     opacity: 0.85;
+  }
+
+  &__theme-toggle {
+    flex-shrink: 0;
+    padding: 0.4375rem 0.875rem;
+    font: inherit;
+    font-weight: 600;
+    color: inherit;
+    cursor: pointer;
+    background: rgb(255 255 255 / 15%);
+    border: 1px solid rgb(255 255 255 / 40%);
+    border-radius: var(--radius-sm);
+
+    &:hover {
+      background: rgb(255 255 255 / 25%);
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+
+      outline-color: var(--color-on-primary);
+    }
   }
 }

@@ -1,7 +1,28 @@
 @use './styles/mixins' as *;
 
-// Блок "app": розмітка сторінки
+// Блок "app": розмітка сторінки; модифікатор --dark перевизначає кольори теми
 .app {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+
+  &--dark {
+    --color-background: #0f172a;
+    --color-surface: #1e293b;
+    --color-surface-muted: #273449;
+    --color-input: #0f172a;
+    --color-border: #334155;
+    --color-text: #e2e8f0;
+    --color-text-muted: #94a3b8;
+    --color-primary: #6366f1;
+    --color-primary-hover: #818cf8;
+    --color-success: #22c55e;
+    --color-danger: #f87171;
+    --shadow: 0 1px 3px rgb(0 0 0 / 40%);
+
+    color-scheme: dark;
+  }
+
   &__container {
     display: grid;
     gap: 1.25rem;
