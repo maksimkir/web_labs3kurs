@@ -4,21 +4,36 @@ import TaskFilters from './components/TaskFilters'
 import TaskForm from './components/TaskForm'
 import TaskList from './components/TaskList'
 import TaskStats from './components/TaskStats'
+import TaskToolbar from './components/TaskToolbar'
 import { initialTasks } from './data/initialTasks'
-import type { NewTask, Task, TaskFilter } from './types/task'
+import { PRIORITY_ORDER, type NewTask, type Task, type TaskFilter } from './types/task'
 import './App.scss'
 
 function App() {
   // список завдань живе в стані App і передається дочірнім компонентам через props
   const [tasks, setTasks] = useState<Task[]>(initialTasks)
   const [filter, setFilter] = useState<TaskFilter>('all')
+  const [search, setSearch] = useState('')
+  const [sortByPriority, setSortByPriority] = useState(false)
 
-  // відфільтрований список обчислюється при кожному рендері; вихідний масив не змінюється
-  const visibleTasks = tasks.filter((task) => {
-    if (filter === 'completed') return task.completed
-    if (filter === 'active') return !task.completed
-    return true
+  // похідні дані обчислюються при кожному рендері; вихідний масив не змінюється
+  const completedCount = tasks.filter((task) => task.completed).length
+  const counts: Record<TaskFilter, number> = {
+    all: tasks.length,
+    completed: completedCount,
+    active: tasks.length - completedCount,
+  }
+
+  const query = search.trim().toLowerCase()
+  const filteredTasks = tasks.filter((task) => {
+    if (filter === 'completed' && !task.completed) return false
+    if (filter === 'active' && task.completed) return false
+    return task.title.toLowerCase().includes(query)
   })
+  // sort змінює масив, тому сортуємо копію
+  const visibleTasks = sortByPriority
+    ? [...filteredTasks].sort((a, b) => PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority])
+    : filteredTasks
 
   function addTask(newTask: NewTask) {
     // незмінне оновлення: новий масив з новим завданням на початку
@@ -40,6 +55,10 @@ function App() {
     setTasks((prev) => prev.filter((task) => task.id !== id))
   }
 
+  function clearCompleted() {
+    setTasks((prev) => prev.filter((task) => !task.completed))
+  }
+
   return (
     <div className="app">
       <Header />
@@ -49,7 +68,15 @@ function App() {
         </aside>
         <div className="app__content">
           <TaskStats tasks={tasks} />
-          <TaskFilters value={filter} onChange={setFilter} />
+          <TaskFilters value={filter} onChange={setFilter} counts={counts} />
+          <TaskToolbar
+            search={search}
+            onSearchChange={setSearch}
+            sortByPriority={sortByPriority}
+            onSortByPriorityChange={setSortByPriority}
+            completedCount={completedCount}
+            onClearCompleted={clearCompleted}
+          />
           <TaskList
             tasks={visibleTasks}
             totalCount={tasks.length}

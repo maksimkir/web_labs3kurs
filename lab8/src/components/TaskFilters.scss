@@ -31,9 +31,24 @@
     }
 
     &--active {
+      .task-filters__count {
+        color: var(--color-on-primary);
+        background: var(--color-primary);
+      }
+
       color: var(--color-primary);
       background: var(--color-surface);
       box-shadow: var(--shadow);
     }
+  }
+
+  &__count {
+    min-width: 1.5rem;
+    padding: 0 0.375rem;
+    font-size: 0.75rem;
+    line-height: 1.375rem;
+    text-align: center;
+    background: var(--color-border);
+    border-radius: 999px;
   }
 }

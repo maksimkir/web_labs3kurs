@@ -4,6 +4,8 @@ import './TaskFilters.scss'
 interface TaskFiltersProps {
   value: TaskFilter
   onChange: (filter: TaskFilter) => void
+  /** Кількість завдань для кожного фільтра — показується в кнопках. */
+  counts: Record<TaskFilter, number>
 }
 
 const FILTERS: { value: TaskFilter; label: string }[] = [
@@ -12,7 +14,7 @@ const FILTERS: { value: TaskFilter; label: string }[] = [
   { value: 'active', label: 'Не виконані' },
 ]
 
-function TaskFilters({ value, onChange }: TaskFiltersProps) {
+function TaskFilters({ value, onChange, counts }: TaskFiltersProps) {
   return (
     <div className="task-filters" role="group" aria-label="Фільтр завдань">
       {FILTERS.map((filter) => (
@@ -24,6 +26,7 @@ function TaskFilters({ value, onChange }: TaskFiltersProps) {
           onClick={() => onChange(filter.value)}
         >
           {filter.label}
+          <span className="task-filters__count">{counts[filter.value]}</span>
         </button>
       ))}
     </div>
