@@ -3,6 +3,7 @@ import Header from './components/Header'
 import TaskFilters from './components/TaskFilters'
 import TaskForm from './components/TaskForm'
 import TaskList from './components/TaskList'
+import TaskStats from './components/TaskStats'
 import { initialTasks } from './data/initialTasks'
 import type { NewTask, Task, TaskFilter } from './types/task'
 import './App.scss'
@@ -47,6 +48,7 @@ function App() {
           <TaskForm onAdd={addTask} />
         </aside>
         <div className="app__content">
+          <TaskStats tasks={tasks} />
           <TaskFilters value={filter} onChange={setFilter} />
           <TaskList
             tasks={visibleTasks}
