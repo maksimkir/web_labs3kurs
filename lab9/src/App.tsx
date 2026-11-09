@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useReducer, useState } from 'react'
 import Header from './components/Header'
 import TaskFilters from './components/TaskFilters'
 import TaskForm from './components/TaskForm'
@@ -6,7 +6,8 @@ import TaskList from './components/TaskList'
 import TaskStats from './components/TaskStats'
 import TaskToolbar from './components/TaskToolbar'
 import { initialTasks } from './data/initialTasks'
-import { PRIORITY_ORDER, type NewTask, type Task, type TaskFilter } from './types/task'
+import { taskReducer } from './reducers/taskReducer'
+import { PRIORITY_ORDER, type NewTask, type TaskFilter } from './types/task'
 import type { Theme } from './types/theme'
 import './App.scss'
 
@@ -15,8 +16,9 @@ function preferredTheme(): Theme {
 }
 
 function App() {
-  // список завдань живе в стані App і передається дочірнім компонентам через props
-  const [tasks, setTasks] = useState<Task[]>(initialTasks)
+  // усі зміни списку завдань проходять через reducer
+  const [state, dispatch] = useReducer(taskReducer, { tasks: initialTasks, pendingDelete: null })
+  const { tasks } = state
   const [filter, setFilter] = useState<TaskFilter>('all')
   const [search, setSearch] = useState('')
   const [sortByPriority, setSortByPriority] = useState(false)
@@ -42,24 +44,18 @@ function App() {
     ? [...filteredTasks].sort((a, b) => PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority])
     : filteredTasks
 
-  function addTask(newTask: NewTask) {
-    // незмінне оновлення: новий масив з новим завданням на початку
-    setTasks((prev) => {
-      const nextId = Math.max(0, ...prev.map((task) => task.id)) + 1
-      return [{ ...newTask, id: nextId, completed: false }, ...prev]
-    })
+  function addTask(task: NewTask) {
+    dispatch({ type: 'add', task })
   }
 
   function toggleTask(id: number) {
-    // map повертає новий масив; змінене завдання — новий об'єкт, інші — без змін
-    setTasks((prev) =>
-      prev.map((task) => (task.id === id ? { ...task, completed: !task.completed } : task)),
-    )
+    dispatch({ type: 'toggle', id })
   }
 
   function deleteTask(id: number) {
-    // filter повертає новий масив без видаленого завдання
-    setTasks((prev) => prev.filter((task) => task.id !== id))
+    // тимчасово видаляємо одразу; Undoable Delete з таймером з'явиться пізніше
+    dispatch({ type: 'requestDelete', id })
+    dispatch({ type: 'confirmDelete' })
   }
 
   function toggleTheme() {
@@ -67,7 +63,8 @@ function App() {
   }
 
   function clearCompleted() {
-    setTasks((prev) => prev.filter((task) => !task.completed))
+    dispatch({ type: 'clearCompleted' })
+    dispatch({ type: 'confirmDelete' })
   }
 
   return (
