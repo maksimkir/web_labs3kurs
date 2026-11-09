@@ -1,4 +1,12 @@
-import { useCallback, useEffect, useMemo, useReducer, useState, type ReactNode } from 'react'
+import {
+  useCallback,
+  useEffect,
+  useEffectEvent,
+  useMemo,
+  useReducer,
+  useState,
+  type ReactNode,
+} from 'react'
 import { initialTasks } from '../data/initialTasks'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 import { useToasts } from '../hooks/useToasts'
@@ -6,6 +14,9 @@ import { taskReducer } from '../reducers/taskReducer'
 import { PRIORITY_ORDER, type NewTask, type TaskFilter, type TaskState } from '../types/task'
 import { loadTasks, saveTasks } from '../utils/taskStorage'
 import { TaskContext, type TaskContextValue } from './task-context'
+
+/** Скільки часу є, щоб скасувати видалення. */
+export const UNDO_DELAY_MS = 5000
 
 const FILTERS: readonly TaskFilter[] = ['all', 'active', 'completed']
 
@@ -28,6 +39,24 @@ export function TaskProvider({ children }: { children: ReactNode }) {
   const { toasts, toast, dismiss: dismissToast } = useToasts()
 
   const { tasks, pendingDelete } = state
+
+  // useEffectEvent: функція бачить актуальні pendingDelete і toast, але не є залежністю ефекту,
+  // тому зміна toast чи інших даних не перезапускає 5-секундний таймер
+  const onUndoTimeout = useEffectEvent(() => {
+    if (!pendingDelete) return
+    dispatch({ type: 'confirmDelete' })
+    toast.success(`Видалено: ${pendingDelete.label}`)
+  })
+
+  // Undoable Delete: таймер — побічний ефект, тому він тут, а не в reducer.
+  // Новий pendingDelete.key перезапускає таймер; cleanup очищує попередній
+  // (при скасуванні, новому видаленні або unmount провайдера).
+  const pendingKey = pendingDelete?.key
+  useEffect(() => {
+    if (pendingKey === undefined) return
+    const timer = setTimeout(onUndoTimeout, UNDO_DELAY_MS)
+    return () => clearTimeout(timer)
+  }, [pendingKey])
 
   // після кожної зміни tasks синхронізуємо їх з localStorage (побічний ефект)
   useEffect(() => {
@@ -68,12 +97,18 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     [toast],
   )
   const toggleTask = useCallback((id: number) => dispatch({ type: 'toggle', id }), [])
-  const requestDelete = useCallback((id: number) => {
-    // тимчасово видаляємо одразу; Undoable Delete з таймером з'явиться пізніше
-    dispatch({ type: 'requestDelete', id })
-    dispatch({ type: 'confirmDelete' })
-  }, [])
-  const undoDelete = useCallback(() => dispatch({ type: 'undoDelete' }), [])
+  const requestDelete = useCallback(
+    (id: number) => {
+      // одночасно лише одне видалення: попереднє reducer завершує одразу
+      if (pendingDelete) toast.success(`Видалено: ${pendingDelete.label}`)
+      dispatch({ type: 'requestDelete', id })
+    },
+    [pendingDelete, toast],
+  )
+  const undoDelete = useCallback(() => {
+    dispatch({ type: 'undoDelete' })
+    toast.info('Видалення скасовано')
+  }, [toast])
   const clearCompleted = useCallback(() => {
     if (counts.completed === 0) {
       toast.error('Немає виконаних завдань для очищення')

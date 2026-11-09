@@ -10,7 +10,9 @@ interface TaskItemProps {
 
 function TaskItem({ task }: TaskItemProps) {
   // дії беремо з контексту — їх не потрібно передавати через TaskList
-  const { toggleTask: onToggle, updateTask: onUpdate, requestDelete: onDelete } = useTaskContext()
+  const { toggleTask: onToggle, updateTask: onUpdate, requestDelete: onDelete, pendingDelete } =
+    useTaskContext()
+  const isPending = pendingDelete?.taskIds.includes(task.id) ?? false
   // режим редагування — локальний UI-стан картки, іншим компонентам він не потрібен
   const [isEditing, setIsEditing] = useState(false)
 
@@ -31,7 +33,10 @@ function TaskItem({ task }: TaskItemProps) {
   }
 
   return (
-    <li className={`task-item${task.completed ? ' task-item--completed' : ''}`}>
+    <li
+      className={`task-item${task.completed ? ' task-item--completed' : ''}${isPending ? ' task-item--pending' : ''}`}
+      aria-disabled={isPending || undefined}
+    >
       <div className="task-item__body">
         <h3 className="task-item__title">{task.title}</h3>
         {task.description && <p className="task-item__description">{task.description}</p>}
@@ -41,6 +46,7 @@ function TaskItem({ task }: TaskItemProps) {
             {PRIORITY_LABELS[task.priority]}
           </span>
           <span className="task-item__status">{task.completed ? 'Виконано' : 'Не виконано'}</span>
+          {isPending && <span className="task-item__pending">Буде видалено</span>}
         </div>
       </div>
       <div className="task-item__actions">
@@ -49,10 +55,16 @@ function TaskItem({ task }: TaskItemProps) {
           className={`button button--small${task.completed ? '' : ' button--primary'}`}
           onClick={() => onToggle(task.id)}
           aria-pressed={task.completed}
+          disabled={isPending}
         >
           {task.completed ? 'Повернути' : 'Виконано'}
         </button>
-        <button type="button" className="button button--small" onClick={() => setIsEditing(true)}>
+        <button
+          type="button"
+          className="button button--small"
+          onClick={() => setIsEditing(true)}
+          disabled={isPending}
+        >
           Редагувати
         </button>
         <button
@@ -60,6 +72,7 @@ function TaskItem({ task }: TaskItemProps) {
           className="button button--small button--danger"
           onClick={() => onDelete(task.id)}
           aria-label={`Видалити завдання «${task.title}»`}
+          disabled={isPending}
         >
           Видалити
         </button>

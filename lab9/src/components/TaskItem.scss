@@ -46,7 +46,8 @@
 
   &__category,
   &__priority,
-  &__status {
+  &__status,
+  &__pending {
     padding: 0.125rem 0.5rem;
     border-radius: 999px;
   }
@@ -74,6 +75,21 @@
   &__status {
     color: var(--color-text-muted);
     border: 1px solid var(--color-border);
+  }
+
+  &__pending {
+    color: var(--color-on-primary);
+    background: var(--color-danger);
+  }
+
+  // очікує остаточного видалення: приглушена картка з написом «Буде видалено»
+  &--pending {
+    border-left-color: var(--color-danger);
+    opacity: 0.55;
+  }
+
+  &--pending &__title {
+    text-decoration: line-through;
   }
 
   &--editing {

@@ -1,5 +1,6 @@
 import { useTaskContext } from '../hooks/useTaskContext'
 import Toast from './Toast'
+import UndoToast from './UndoToast'
 import './ToastContainer.scss'
 
 function ToastContainer() {
@@ -11,6 +12,7 @@ function ToastContainer() {
       {toasts.map((toast) => (
         <Toast key={toast.id} toast={toast} onDismiss={dismissToast} />
       ))}
+      <UndoToast />
     </div>
   )
 }
