@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Header from './components/Header'
 import TaskFilters from './components/TaskFilters'
 import TaskForm from './components/TaskForm'
@@ -14,7 +14,13 @@ function preferredTheme(): Theme {
 }
 
 function App() {
-  const { addTask } = useTaskContext()
+  const { addTask, counts } = useTaskContext()
+  const activeCount = counts.active
+
+  // синхронізація React state із зовнішнім API браузера — заголовком вкладки
+  useEffect(() => {
+    document.title = `Study Planner — ${activeCount} active ${activeCount === 1 ? 'task' : 'tasks'}`
+  }, [activeCount])
   // лінива ініціалізація: тема системи визначається лише при першому рендері
   const [theme, setTheme] = useState<Theme>(preferredTheme)
 
