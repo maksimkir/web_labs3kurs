@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useReducer, useState, type ReactNode } from 'react'
 import { initialTasks } from '../data/initialTasks'
 import { useLocalStorage } from '../hooks/useLocalStorage'
+import { useToasts } from '../hooks/useToasts'
 import { taskReducer } from '../reducers/taskReducer'
 import { PRIORITY_ORDER, type NewTask, type TaskFilter, type TaskState } from '../types/task'
 import { loadTasks, saveTasks } from '../utils/taskStorage'
@@ -24,13 +25,14 @@ export function TaskProvider({ children }: { children: ReactNode }) {
   const [filter, setFilter] = useLocalStorage<TaskFilter>('study-planner:filter', 'all', isTaskFilter)
   const [search, setSearch] = useState('')
   const [sortByPriority, setSortByPriority] = useState(false)
+  const { toasts, toast, dismiss: dismissToast } = useToasts()
 
   const { tasks, pendingDelete } = state
 
   // після кожної зміни tasks синхронізуємо їх з localStorage (побічний ефект)
   useEffect(() => {
-    saveTasks(tasks)
-  }, [tasks])
+    if (!saveTasks(tasks)) toast.error('Не вдалося зберегти завдання в браузері')
+  }, [tasks, toast])
 
   // похідні дані обчислюються під час рендеру, а не зберігаються окремим state
   const counts = useMemo(() => {
@@ -51,10 +53,19 @@ export function TaskProvider({ children }: { children: ReactNode }) {
   }, [tasks, filter, search, sortByPriority])
 
   // useCallback: дії зберігають ту саму функцію між рендерами
-  const addTask = useCallback((task: NewTask) => dispatch({ type: 'add', task }), [])
+  const addTask = useCallback(
+    (task: NewTask) => {
+      dispatch({ type: 'add', task })
+      toast.success(`Завдання «${task.title}» додано`)
+    },
+    [toast],
+  )
   const updateTask = useCallback(
-    (id: number, changes: NewTask) => dispatch({ type: 'update', id, changes }),
-    [],
+    (id: number, changes: NewTask) => {
+      dispatch({ type: 'update', id, changes })
+      toast.success('Зміни збережено')
+    },
+    [toast],
   )
   const toggleTask = useCallback((id: number) => dispatch({ type: 'toggle', id }), [])
   const requestDelete = useCallback((id: number) => {
@@ -64,10 +75,17 @@ export function TaskProvider({ children }: { children: ReactNode }) {
   }, [])
   const undoDelete = useCallback(() => dispatch({ type: 'undoDelete' }), [])
   const clearCompleted = useCallback(() => {
+    if (counts.completed === 0) {
+      toast.error('Немає виконаних завдань для очищення')
+      return
+    }
     dispatch({ type: 'clearCompleted' })
     dispatch({ type: 'confirmDelete' })
-  }, [])
-  const resetTasks = useCallback(() => dispatch({ type: 'reset', tasks: initialTasks }), [])
+  }, [counts.completed, toast])
+  const resetTasks = useCallback(() => {
+    dispatch({ type: 'reset', tasks: initialTasks })
+    toast.info('Дані скинуто до початкового списку')
+  }, [toast])
 
   // useMemo: новий об'єкт value (і перерендер споживачів) лише коли змінилися дані
   const value = useMemo<TaskContextValue>(
@@ -89,6 +107,9 @@ export function TaskProvider({ children }: { children: ReactNode }) {
       undoDelete,
       clearCompleted,
       resetTasks,
+      toast,
+      toasts,
+      dismissToast,
     }),
     [
       tasks,
@@ -106,6 +127,9 @@ export function TaskProvider({ children }: { children: ReactNode }) {
       undoDelete,
       clearCompleted,
       resetTasks,
+      toast,
+      toasts,
+      dismissToast,
     ],
   )
 

@@ -1,5 +1,6 @@
 import { createContext } from 'react'
 import type { NewTask, PendingDelete, Task, TaskFilter } from '../types/task'
+import type { ToastApi, ToastMessage } from '../types/toast'
 
 export interface TaskContextValue {
   tasks: Task[]
@@ -20,6 +21,10 @@ export interface TaskContextValue {
   undoDelete: () => void
   clearCompleted: () => void
   resetTasks: () => void
+  /** Показ сповіщень: toast.success(...), toast.error(...). */
+  toast: ToastApi
+  toasts: ToastMessage[]
+  dismissToast: (id: number) => void
 }
 
 // Окремий модуль лише для об'єкта контексту: провайдер і хук імпортують його звідси.

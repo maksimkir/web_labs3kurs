@@ -38,10 +38,12 @@ export function loadTasks(): Task[] | null {
   }
 }
 
-export function saveTasks(tasks: Task[]): void {
+/** Повертає false, якщо зберегти не вдалося (сховище переповнене або недоступне). */
+export function saveTasks(tasks: Task[]): boolean {
   try {
     localStorage.setItem(TASKS_STORAGE_KEY, JSON.stringify(tasks))
+    return true
   } catch {
-    // сховище переповнене або недоступне — дані лишаються в пам'яті
+    return false
   }
 }

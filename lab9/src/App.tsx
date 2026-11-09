@@ -5,6 +5,7 @@ import TaskForm from './components/TaskForm'
 import TaskList from './components/TaskList'
 import TaskStats from './components/TaskStats'
 import TaskToolbar from './components/TaskToolbar'
+import ToastContainer from './components/ToastContainer'
 import { useTaskContext } from './hooks/useTaskContext'
 import type { Theme } from './types/theme'
 import './App.scss'
@@ -42,6 +43,7 @@ function App() {
           <TaskList />
         </div>
       </main>
+      <ToastContainer />
     </div>
   )
 }
