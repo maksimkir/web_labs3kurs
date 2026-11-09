@@ -1,17 +1,36 @@
-import { useCallback, useMemo, useReducer, useState, type ReactNode } from 'react'
+import { useCallback, useEffect, useMemo, useReducer, useState, type ReactNode } from 'react'
 import { initialTasks } from '../data/initialTasks'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 import { taskReducer } from '../reducers/taskReducer'
-import { PRIORITY_ORDER, type NewTask, type TaskFilter } from '../types/task'
+import { PRIORITY_ORDER, type NewTask, type TaskFilter, type TaskState } from '../types/task'
+import { loadTasks, saveTasks } from '../utils/taskStorage'
 import { TaskContext, type TaskContextValue } from './task-context'
 
+const FILTERS: readonly TaskFilter[] = ['all', 'active', 'completed']
+
+function isTaskFilter(value: unknown): value is TaskFilter {
+  return FILTERS.includes(value as TaskFilter)
+}
+
+// Початковий стан reducer-а: збережені завдання або, якщо їх немає чи вони пошкоджені, — початковий список.
+function initState(): TaskState {
+  return { tasks: loadTasks() ?? initialTasks, pendingDelete: null }
+}
+
 export function TaskProvider({ children }: { children: ReactNode }) {
-  // tasks — єдине джерело правди, ним керує reducer
-  const [state, dispatch] = useReducer(taskReducer, { tasks: initialTasks, pendingDelete: null })
-  const [filter, setFilter] = useState<TaskFilter>('all')
+  // tasks — єдине джерело правди, ним керує reducer; localStorage лише зберігає їх між сесіями
+  const [state, dispatch] = useReducer(taskReducer, undefined, initState)
+  // активний фільтр зберігається через власний hook
+  const [filter, setFilter] = useLocalStorage<TaskFilter>('study-planner:filter', 'all', isTaskFilter)
   const [search, setSearch] = useState('')
   const [sortByPriority, setSortByPriority] = useState(false)
 
   const { tasks, pendingDelete } = state
+
+  // після кожної зміни tasks синхронізуємо їх з localStorage (побічний ефект)
+  useEffect(() => {
+    saveTasks(tasks)
+  }, [tasks])
 
   // похідні дані обчислюються під час рендеру, а не зберігаються окремим state
   const counts = useMemo(() => {
@@ -77,6 +96,7 @@ export function TaskProvider({ children }: { children: ReactNode }) {
       counts,
       pendingDelete,
       filter,
+      setFilter,
       search,
       sortByPriority,
       addTask,
