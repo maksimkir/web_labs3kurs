@@ -76,6 +76,11 @@
     border: 1px solid var(--color-border);
   }
 
+  &--editing {
+    display: block;
+    border-left-color: var(--color-priority-medium);
+  }
+
   &--completed {
     border-left-color: var(--color-success);
     opacity: 0.7;

@@ -1,13 +1,35 @@
-import { PRIORITY_LABELS, type Task } from '../types/task'
+import { useState } from 'react'
+import { PRIORITY_LABELS, type NewTask, type Task } from '../types/task'
+import TaskForm from './TaskForm'
 import './TaskItem.scss'
 
 interface TaskItemProps {
   task: Task
   onToggle: (id: number) => void
+  onUpdate: (id: number, changes: NewTask) => void
   onDelete: (id: number) => void
 }
 
-function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
+function TaskItem({ task, onToggle, onUpdate, onDelete }: TaskItemProps) {
+  // режим редагування — локальний UI-стан картки, іншим компонентам він не потрібен
+  const [isEditing, setIsEditing] = useState(false)
+
+  if (isEditing) {
+    const { title, description, category, priority } = task
+    return (
+      <li className="task-item task-item--editing">
+        <TaskForm
+          initialValues={{ title, description, category, priority }}
+          onSubmit={(changes) => {
+            onUpdate(task.id, changes)
+            setIsEditing(false)
+          }}
+          onCancel={() => setIsEditing(false)}
+        />
+      </li>
+    )
+  }
+
   return (
     <li className={`task-item${task.completed ? ' task-item--completed' : ''}`}>
       <div className="task-item__body">
@@ -29,6 +51,9 @@ function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
           aria-pressed={task.completed}
         >
           {task.completed ? 'Повернути' : 'Виконано'}
+        </button>
+        <button type="button" className="button button--small" onClick={() => setIsEditing(true)}>
+          Редагувати
         </button>
         <button
           type="button"

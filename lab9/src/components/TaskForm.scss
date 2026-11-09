@@ -22,7 +22,15 @@
     gap: 0.75rem;
   }
 
-  &__submit {
-    align-self: flex-start;
+  &__actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  // у режимі редагування форма вбудована в картку завдання
+  &--editing {
+    padding: 0;
+    border: 0;
+    box-shadow: none;
   }
 }

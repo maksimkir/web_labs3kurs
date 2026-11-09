@@ -48,6 +48,11 @@ function App() {
     dispatch({ type: 'add', task })
   }
 
+  function updateTask(id: number, changes: NewTask) {
+    // зміни проходять через dispatch і reducer, а не через пряму зміну об'єкта
+    dispatch({ type: 'update', id, changes })
+  }
+
   function toggleTask(id: number) {
     dispatch({ type: 'toggle', id })
   }
@@ -72,7 +77,7 @@ function App() {
       <Header theme={theme} onToggleTheme={toggleTheme} />
       <main className="app__container">
         <aside className="app__sidebar">
-          <TaskForm onAdd={addTask} />
+          <TaskForm onSubmit={addTask} />
         </aside>
         <div className="app__content">
           <TaskStats tasks={tasks} />
@@ -89,6 +94,7 @@ function App() {
             tasks={visibleTasks}
             totalCount={tasks.length}
             onToggle={toggleTask}
+            onUpdate={updateTask}
             onDelete={deleteTask}
           />
         </div>
