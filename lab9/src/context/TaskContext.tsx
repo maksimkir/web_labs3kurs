@@ -114,9 +114,10 @@ export function TaskProvider({ children }: { children: ReactNode }) {
       toast.error('Немає виконаних завдань для очищення')
       return
     }
+    // масове видалення проходить той самий undo-flow, що й видалення одного завдання
+    if (pendingDelete) toast.success(`Видалено: ${pendingDelete.label}`)
     dispatch({ type: 'clearCompleted' })
-    dispatch({ type: 'confirmDelete' })
-  }, [counts.completed, toast])
+  }, [counts.completed, pendingDelete, toast])
   const resetTasks = useCallback(() => {
     dispatch({ type: 'reset', tasks: initialTasks })
     toast.info('Дані скинуто до початкового списку')

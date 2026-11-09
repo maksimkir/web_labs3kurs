@@ -9,6 +9,7 @@ function TaskToolbar() {
     setSortByPriority: onSortByPriorityChange,
     counts,
     clearCompleted: onClearCompleted,
+    resetTasks,
   } = useTaskContext()
   const completedCount = counts.completed
 
@@ -44,6 +45,10 @@ function TaskToolbar() {
           Очистити виконані ({completedCount})
         </button>
       )}
+
+      <button type="button" className="button button--small button--ghost" onClick={resetTasks}>
+        Скинути дані
+      </button>
     </div>
   )
 }
