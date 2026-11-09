@@ -1,12 +1,8 @@
-import type { Theme } from '../types/theme'
+import { useTheme } from '../hooks/useTheme'
 import './Header.scss'
 
-interface HeaderProps {
-  theme: Theme
-  onToggleTheme: () => void
-}
-
-function Header({ theme, onToggleTheme }: HeaderProps) {
+function Header() {
+  const { theme, toggleTheme: onToggleTheme } = useTheme()
   const isDark = theme === 'dark'
 
   return (

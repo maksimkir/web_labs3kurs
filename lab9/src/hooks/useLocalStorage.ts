@@ -33,5 +33,15 @@ export function useLocalStorage<T>(
     }
   }, [key, value])
 
+  // значення, змінене в іншій вкладці, підхоплюється через подію storage
+  useEffect(() => {
+    function handleStorage(event: StorageEvent) {
+      if (event.key !== key || event.newValue === null) return
+      setValue(readValue(key, initialValue, isValid))
+    }
+    window.addEventListener('storage', handleStorage)
+    return () => window.removeEventListener('storage', handleStorage)
+  }, [key, initialValue, isValid])
+
   return [value, setValue] as const
 }

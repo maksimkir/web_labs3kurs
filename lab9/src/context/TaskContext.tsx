@@ -12,7 +12,7 @@ import { useLocalStorage } from '../hooks/useLocalStorage'
 import { useToasts } from '../hooks/useToasts'
 import { taskReducer } from '../reducers/taskReducer'
 import { PRIORITY_ORDER, type NewTask, type TaskFilter, type TaskState } from '../types/task'
-import { loadTasks, saveTasks } from '../utils/taskStorage'
+import { loadTasks, parseTasks, saveTasks, TASKS_STORAGE_KEY } from '../utils/taskStorage'
 import { TaskContext, type TaskContextValue } from './task-context'
 
 /** Скільки часу є, щоб скасувати видалення. */
@@ -57,6 +57,18 @@ export function TaskProvider({ children }: { children: ReactNode }) {
     const timer = setTimeout(onUndoTimeout, UNDO_DELAY_MS)
     return () => clearTimeout(timer)
   }, [pendingKey])
+
+  // Синхронізація між вкладками: подія storage приходить, коли інша вкладка змінила localStorage.
+  // Запис того самого значення подію не породжує, тож зациклення немає.
+  useEffect(() => {
+    function handleStorage(event: StorageEvent) {
+      if (event.key !== TASKS_STORAGE_KEY) return
+      const synced = parseTasks(event.newValue)
+      if (synced) dispatch({ type: 'sync', tasks: synced })
+    }
+    window.addEventListener('storage', handleStorage)
+    return () => window.removeEventListener('storage', handleStorage)
+  }, [])
 
   // після кожної зміни tasks синхронізуємо їх з localStorage (побічний ефект)
   useEffect(() => {

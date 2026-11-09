@@ -51,3 +51,5 @@ export type TaskAction =
   | { type: 'confirmDelete' }
   | { type: 'undoDelete' }
   | { type: 'reset'; tasks: Task[] }
+  /** Список змінили в іншій вкладці браузера. */
+  | { type: 'sync'; tasks: Task[] }

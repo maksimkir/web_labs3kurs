@@ -66,6 +66,9 @@ export function taskReducer(state: TaskState, action: TaskAction): TaskState {
     case 'reset':
       return { tasks: action.tasks, pendingDelete: null }
 
+    case 'sync':
+      return { ...state, tasks: action.tasks }
+
     default:
       return state
   }
