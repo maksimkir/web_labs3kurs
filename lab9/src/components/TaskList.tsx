@@ -1,20 +1,12 @@
-import type { NewTask, Task } from '../types/task'
+import { useTaskContext } from '../hooks/useTaskContext'
 import TaskItem from './TaskItem'
 import './TaskList.scss'
 
-interface TaskListProps {
-  /** Завдання після фільтрації. */
-  tasks: Task[]
-  /** Скільки завдань є взагалі (до фільтрації). */
-  totalCount: number
-  onToggle: (id: number) => void
-  onUpdate: (id: number, changes: NewTask) => void
-  onDelete: (id: number) => void
-}
+function TaskList() {
+  const { tasks, visibleTasks } = useTaskContext()
 
-function TaskList({ tasks, totalCount, onToggle, onUpdate, onDelete }: TaskListProps) {
   // умовний рендеринг: окремі повідомлення для порожнього списку і порожнього фільтра
-  if (totalCount === 0) {
+  if (tasks.length === 0) {
     return (
       <div className="task-list__empty">
         <p className="task-list__empty-title">Завдань поки немає.</p>
@@ -23,7 +15,7 @@ function TaskList({ tasks, totalCount, onToggle, onUpdate, onDelete }: TaskListP
     )
   }
 
-  if (tasks.length === 0) {
+  if (visibleTasks.length === 0) {
     return (
       <div className="task-list__empty">
         <p>За цим фільтром завдань немає.</p>
@@ -33,9 +25,9 @@ function TaskList({ tasks, totalCount, onToggle, onUpdate, onDelete }: TaskListP
 
   return (
     <ul className="task-list">
-      {tasks.map((task) => (
+      {visibleTasks.map((task) => (
         // стабільний key — id завдання, а не індекс масиву
-        <TaskItem key={task.id} task={task} onToggle={onToggle} onUpdate={onUpdate} onDelete={onDelete} />
+        <TaskItem key={task.id} task={task} />
       ))}
     </ul>
   )

@@ -1,22 +1,17 @@
+import { useTaskContext } from '../hooks/useTaskContext'
 import './TaskToolbar.scss'
 
-interface TaskToolbarProps {
-  search: string
-  onSearchChange: (search: string) => void
-  sortByPriority: boolean
-  onSortByPriorityChange: (value: boolean) => void
-  completedCount: number
-  onClearCompleted: () => void
-}
+function TaskToolbar() {
+  const {
+    search,
+    setSearch: onSearchChange,
+    sortByPriority,
+    setSortByPriority: onSortByPriorityChange,
+    counts,
+    clearCompleted: onClearCompleted,
+  } = useTaskContext()
+  const completedCount = counts.completed
 
-function TaskToolbar({
-  search,
-  onSearchChange,
-  sortByPriority,
-  onSortByPriorityChange,
-  completedCount,
-  onClearCompleted,
-}: TaskToolbarProps) {
   return (
     <div className="task-toolbar">
       <div className="field task-toolbar__search">

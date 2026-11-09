@@ -1,15 +1,10 @@
-import type { Task } from '../types/task'
+import { useTaskContext } from '../hooks/useTaskContext'
 import './TaskStats.scss'
 
-interface TaskStatsProps {
-  tasks: Task[]
-}
-
-function TaskStats({ tasks }: TaskStatsProps) {
-  // лічильники обчислюються з поточного масиву — окремий state не потрібен
-  const total = tasks.length
-  const completed = tasks.filter((task) => task.completed).length
-  const active = total - completed
+function TaskStats() {
+  // лічильники обчислюються з поточного масиву в контексті — окремий state не потрібен
+  const { counts } = useTaskContext()
+  const { all: total, completed, active } = counts
   const progress = total === 0 ? 0 : Math.round((completed / total) * 100)
 
   const items = [

@@ -1,12 +1,6 @@
+import { useTaskContext } from '../hooks/useTaskContext'
 import type { TaskFilter } from '../types/task'
 import './TaskFilters.scss'
-
-interface TaskFiltersProps {
-  value: TaskFilter
-  onChange: (filter: TaskFilter) => void
-  /** Кількість завдань для кожного фільтра — показується в кнопках. */
-  counts: Record<TaskFilter, number>
-}
 
 const FILTERS: { value: TaskFilter; label: string }[] = [
   { value: 'all', label: 'Всі' },
@@ -14,7 +8,9 @@ const FILTERS: { value: TaskFilter; label: string }[] = [
   { value: 'active', label: 'Не виконані' },
 ]
 
-function TaskFilters({ value, onChange, counts }: TaskFiltersProps) {
+function TaskFilters() {
+  const { filter: value, setFilter: onChange, counts } = useTaskContext()
+
   return (
     <div className="task-filters" role="group" aria-label="Фільтр завдань">
       {FILTERS.map((filter) => (

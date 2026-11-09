@@ -1,16 +1,16 @@
 import { useState } from 'react'
-import { PRIORITY_LABELS, type NewTask, type Task } from '../types/task'
+import { useTaskContext } from '../hooks/useTaskContext'
+import { PRIORITY_LABELS, type Task } from '../types/task'
 import TaskForm from './TaskForm'
 import './TaskItem.scss'
 
 interface TaskItemProps {
   task: Task
-  onToggle: (id: number) => void
-  onUpdate: (id: number, changes: NewTask) => void
-  onDelete: (id: number) => void
 }
 
-function TaskItem({ task, onToggle, onUpdate, onDelete }: TaskItemProps) {
+function TaskItem({ task }: TaskItemProps) {
+  // дії беремо з контексту — їх не потрібно передавати через TaskList
+  const { toggleTask: onToggle, updateTask: onUpdate, requestDelete: onDelete } = useTaskContext()
   // режим редагування — локальний UI-стан картки, іншим компонентам він не потрібен
   const [isEditing, setIsEditing] = useState(false)
 
