@@ -13,7 +13,7 @@ function readValue<T>(key: string, initialValue: T, isValid?: (value: unknown) =
 }
 
 /**
- * useState, значення якого зберігається в localStorage між перезавантаженнями.
+ * useState, значення зберігається в localStorage між перезавантаженнями.
  * isValid перевіряє збережене значення (наприклад, що фільтр — один з допустимих).
  */
 export function useLocalStorage<T>(
