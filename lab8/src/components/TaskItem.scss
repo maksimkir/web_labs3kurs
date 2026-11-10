@@ -1,0 +1,92 @@
+@use '../styles/mixins' as *;
+
+// Блок "task-item": картка завдання; модифікатор --completed для виконаного
+.task-item {
+  @include card;
+
+  display: flex;
+  gap: 0.875rem;
+  align-items: flex-start;
+  padding: 1rem;
+  list-style: none;
+  border-left: 4px solid var(--color-primary);
+  transition: opacity 0.15s ease;
+
+  &__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    gap: 0.375rem;
+  }
+
+  &__title {
+    font-size: 1rem;
+    overflow-wrap: anywhere;
+  }
+
+  &__description {
+    margin-top: 0.25rem;
+    color: var(--color-text-muted);
+    overflow-wrap: anywhere;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin-top: 0.625rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  &__category,
+  &__priority,
+  &__status {
+    padding: 0.125rem 0.5rem;
+    border-radius: 999px;
+  }
+
+  &__category {
+    background: var(--color-surface-muted);
+  }
+
+  &__priority {
+    color: var(--color-on-primary);
+
+    &--high {
+      background: var(--color-priority-high);
+    }
+
+    &--medium {
+      background: var(--color-priority-medium);
+    }
+
+    &--low {
+      background: var(--color-priority-low);
+    }
+  }
+
+  &__status {
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+  }
+
+  &--completed {
+    border-left-color: var(--color-success);
+    opacity: 0.7;
+  }
+
+  &--completed &__title {
+    text-decoration: line-through;
+  }
+
+  &--completed &__status {
+    color: var(--color-success);
+    border-color: var(--color-success);
+  }
+}
