@@ -1,0 +1,125 @@
+// ---------------------------------------------------------------------------
+// 1. Налаштування Bootstrap (змінні перевизначаємо ДО імпорту)
+// ---------------------------------------------------------------------------
+$font-family-sans-serif: 'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+$font-size-base: 0.875rem;
+$line-height-base: 1.5;
+
+$primary: #00a3dc;
+$success: #1f9d73;
+$danger: #f1556c;
+$min-contrast-ratio: 2.5; // білий текст на кнопках, як у дизайні
+
+$body-bg: #f4f4f4;
+$body-color: #313a46;
+$body-secondary-color: #8a94a0;
+$border-color: #e8ecef;
+$border-radius: 0.1875rem;
+
+$headings-font-weight: 700;
+$headings-color: #313a46;
+
+$input-bg: #fafafa;
+$input-border-color: #e8ecef;
+$input-placeholder-color: #98a6ad;
+$input-padding-y: 0.4375rem;
+$input-padding-x: 0.75rem;
+$input-focus-border-color: #66cdee;
+$input-focus-box-shadow: none;
+$form-label-font-weight: 600;
+$form-label-margin-bottom: 0.3125rem;
+$form-feedback-icon-valid-color: $success;
+
+$btn-font-weight: 600;
+$btn-padding-y: 0.4375rem;
+$btn-padding-x: 1rem;
+$btn-focus-box-shadow: none;
+
+$card-bg: #fff;
+$card-border-color: #eceff2;
+$card-border-radius: 0.25rem;
+$card-spacer-x: 1.25rem;
+
+$table-cell-padding-y: 0.625rem;
+$table-cell-padding-x: 0.75rem;
+$table-border-color: #eceff2;
+$table-color: #8a94a0;
+$table-bg: transparent;
+
+$modal-content-bg: #fff;
+$modal-content-border-radius: 0.25rem;
+$modal-content-border-color: transparent;
+$modal-header-padding: 1rem 1.25rem;
+$modal-inner-padding: 1.25rem;
+
+// ---------------------------------------------------------------------------
+// 2. Імпортуємо лише потрібні частини Bootstrap
+// ---------------------------------------------------------------------------
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/variables-dark';
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/root';
+@import 'bootstrap/scss/reboot';
+@import 'bootstrap/scss/tables';
+@import 'bootstrap/scss/forms';
+@import 'bootstrap/scss/buttons';
+@import 'bootstrap/scss/transitions';
+@import 'bootstrap/scss/close';
+@import 'bootstrap/scss/card';
+@import 'bootstrap/scss/modal';
+@import 'bootstrap/scss/pagination';
+@import 'bootstrap/scss/alert';
+@import 'bootstrap/scss/spinners';
+@import 'bootstrap/scss/helpers/visually-hidden';
+
+// ---------------------------------------------------------------------------
+// 3. Стилі застосунку
+// ---------------------------------------------------------------------------
+:root {
+  --lottery-ink: #313a46;
+}
+
+.lottery {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 68rem;
+  padding: 1.5rem 1rem 3rem;
+  margin: 0 auto;
+}
+
+.card {
+  box-shadow: 0 1px 1px rgb(49 58 70 / 3%);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+}
+
+a {
+  color: var(--bs-primary);
+}
+
+.section-title {
+  margin: 0 0 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--lottery-ink);
+  text-transform: uppercase;
+}
+
+.card-body-padded {
+  padding: 1.125rem 1.25rem 1.25rem;
+}
+
+// Стани запитів до API: завантаження та помилка.
+.request-state {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 0.75rem;
+  color: var(--bs-secondary-color);
+}
