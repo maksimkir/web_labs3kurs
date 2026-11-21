@@ -1,0 +1,23 @@
+@use '../styles/mixins' as *;
+
+// Блок "study-planner": розмітка сторінки — форма зліва, список справа
+.study-planner {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 68rem;
+  padding: 1.5rem 1rem 3rem;
+  margin: 0 auto;
+
+  @include breakpoint-md {
+    grid-template-columns: 22rem 1fr;
+    align-items: start;
+  }
+
+  &__sidebar,
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    min-width: 0;
+  }
+}
