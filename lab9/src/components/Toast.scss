@@ -1,0 +1,85 @@
+@use '../styles/mixins' as *;
+
+// Блок "toast": коротке повідомлення; модифікатори --success, --error, --info
+.toast {
+  display: flex;
+  gap: 0.625rem;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0.75rem 0.875rem;
+  color: var(--color-text);
+  pointer-events: auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 8px 24px rgb(15 23 42 / 18%);
+  animation: toast-in 0.2s ease-out;
+
+  &__icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 1.375rem;
+    height: 1.375rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--color-on-primary);
+    background: var(--color-primary);
+    border-radius: 50%;
+  }
+
+  &__text {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  &__close {
+    padding: 0 0.25rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    background: none;
+    border: 0;
+
+    &:hover {
+      color: var(--color-text);
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+
+  &--success {
+    border-left-color: var(--color-success);
+  }
+
+  &--success &__icon {
+    background: var(--color-success);
+  }
+
+  &--error {
+    border-left-color: var(--color-danger);
+  }
+
+  &--error &__icon {
+    background: var(--color-danger);
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    animation: none;
+  }
+}
