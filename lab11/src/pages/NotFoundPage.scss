@@ -1,0 +1,24 @@
+// Блок "not-found": сторінка 404 / помилка маршруту
+.not-found {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 3rem 1rem;
+  text-align: center;
+
+  &__code {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--color-primary);
+  }
+
+  &__title {
+    font-size: 1.5rem;
+  }
+
+  &__text {
+    color: var(--color-text-muted);
+  }
+}

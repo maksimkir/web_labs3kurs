@@ -1,0 +1,50 @@
+// Блок "app-layout": спільний layout; модифікатор --dark перевизначає кольори теми
+.app-layout {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+
+  &--dark {
+    --color-background: #0f172a;
+    --color-surface: #1e293b;
+    --color-surface-muted: #273449;
+    --color-input: #0f172a;
+    --color-border: #334155;
+    --color-text: #e2e8f0;
+    --color-text-muted: #94a3b8;
+    --color-primary: #6366f1;
+    --color-primary-hover: #818cf8;
+    --color-success: #22c55e;
+    --color-danger: #f87171;
+    --shadow: 0 1px 3px rgb(0 0 0 / 40%);
+
+    color-scheme: dark;
+  }
+
+  &__main {
+    max-width: 68rem;
+    padding: 1.5rem 1rem 3rem;
+    margin: 0 auto;
+  }
+
+  &__progress {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 200;
+    height: 3px;
+    background: var(--color-priority-medium);
+    animation: app-layout-progress 1s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes app-layout-progress {
+  from {
+    transform: scaleX(0.1);
+    transform-origin: left;
+  }
+
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
