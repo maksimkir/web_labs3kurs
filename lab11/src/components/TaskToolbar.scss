@@ -1,0 +1,20 @@
+// Блок "task-toolbar": пошук із debounce та фільтр за пріоритетом
+.task-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+
+  &__search {
+    flex: 1 1 14rem;
+  }
+
+  &__priority {
+    flex: 0 1 13rem;
+  }
+
+  &__hint {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+}

@@ -1,0 +1,26 @@
+// Блок "tasks-page": сторінка списку завдань
+.tasks-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  &__heading {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+  }
+
+  &__add {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    border-radius: 50%;
+  }
+}
