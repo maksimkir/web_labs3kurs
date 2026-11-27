@@ -1,0 +1,61 @@
+@use 'blocks/button';
+@use 'blocks/field';
+
+// Тема задається CSS-змінними, тож компоненти не залежать від конкретних кольорів.
+:root {
+  --color-background: #f3f5f9;
+  --color-surface: #ffffff;
+  --color-surface-muted: #eef1f6;
+  --color-input: #ffffff;
+  --color-border: #d8dee8;
+  --color-text: #1f2937;
+  --color-text-muted: #6b7280;
+  --color-primary: #4f46e5;
+  --color-primary-hover: #4338ca;
+  --color-on-primary: #ffffff;
+  --color-success: #15803d;
+  --color-danger: #dc2626;
+  --color-priority-high: #dc2626;
+  --color-priority-medium: #d97706;
+  --color-priority-low: #2563eb;
+  --radius: 0.75rem;
+  --radius-sm: 0.5rem;
+  --shadow: 0 1px 3px rgb(15 23 42 / 8%);
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  background: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

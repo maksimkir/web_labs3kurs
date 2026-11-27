@@ -1,0 +1,98 @@
+// Глобальні стилі застосунку. Компоненти й тему дає PrimeVue (app/providers/ui.ts),
+// тут лише базові стилі сторінки та спільні класи. Кольори беруться з токенів
+// теми PrimeVue (--p-*), тому світла й темна теми працюють автоматично.
+
+:root {
+  --app-font: 'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --app-background: var(--p-surface-100);
+}
+
+:root.app-dark {
+  --app-background: var(--p-surface-950);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light;
+
+  &.app-dark {
+    color-scheme: dark;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--app-font);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--p-text-color);
+  background: var(--app-background);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+a {
+  color: var(--p-primary-color);
+}
+
+// AppButton з to/href рендериться як посилання — без підкреслення
+a.p-button {
+  text-decoration: none;
+}
+
+code {
+  font-size: 0.875em;
+  color: var(--p-primary-color);
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 68rem;
+  padding: 1.5rem 1rem 3rem;
+  margin: 0 auto;
+}
+
+// Поля форм (AppInput, AppSelect).
+.app-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3125rem;
+}
+
+.app-field__label {
+  font-weight: 600;
+}
+
+.app-field__error {
+  font-size: 0.75rem;
+  color: var(--p-red-500);
+}
+
+.app-field__input--valid {
+  border-color: var(--p-green-500);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

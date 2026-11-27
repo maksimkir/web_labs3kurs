@@ -1,0 +1,13 @@
+// Блок "toast-container": місце для повідомлень у правому нижньому куті
+.toast-container {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: min(22rem, calc(100vw - 2rem));
+  // кліки проходять крізь порожнє місце до інтерфейсу під ним
+  pointer-events: none;
+}
